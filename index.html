@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Gunslinger</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+    </head>
+    <body>
+        <div id="container">
+            <div id="game-board">
+
+            </div>
+            <div id="ammo">
+
+            </div>
+        </div>
+
+        <div id="instructions">
+            <h1>Gunslinger</h1>
+            <p>
+                That slippery bandit has barricaded himself inside the old saloon. Marshall, you are down to your last six bullets. You know he's at one of the windows, watching you, waiting for his opportunity to take you out and make his escape.
+            </p>
+            <p>
+                He will probably slip from window to window between shots, but it's unlikely he'll get very far. Run out of ammo, and you are toast!
+            </p>
+            <p>
+                Take him out, Marshall!
+            </p>
+        </div>
+        
+        <script src="js/script.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            let board = document.getElementById("game-board");
+
+            let setup = "";
+
+            for (let i = 0; i < NUM_OF_WINDOWS; i++) {
+                setup += "<div class='window' id='" + i + "'></div>";
+
+            }
+
+            board.innerHTML = setup;
+
+            for (let i = 0; i < NUM_OF_WINDOWS; i++) {
+                document.getElementById("" + i).addEventListener("click", saloon.shoot_window);
+            }
+            
+            saloon.start();
+
+            let ammo = document.getElementById("ammo");
+            
+            ammo.innerHTML = "[";
+            for (let a = 0; a < saloon.cylinder; a++) {
+                ammo.innerHTML += "&#9678;"
+            }
+            ammo.innerHTML += "]";
+        
+        </script>
+    </body>
+</html>
